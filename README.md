@@ -52,3 +52,25 @@ ctest --test-dir build --output-on-failure
 ```
 
 生成文件位于 `build/MultiPaste.exe`。
+
+## 自动构建与发布
+
+GitHub Actions 会在推送到 `main` 或创建 Pull Request 时自动执行 Windows x64 编译和测试。
+
+发布新版本有两种方式：
+
+1. 在 GitHub 仓库的 **Actions → Release → Run workflow** 中输入版本号，例如 `0.2.0`。
+2. 在本地推送符合 `v*` 格式的标签：
+
+```powershell
+git tag v0.2.0
+git push origin v0.2.0
+```
+
+发布成功后，GitHub Releases 会提供：
+
+- `MultiPaste-<版本>-Setup-x64.exe`：当前用户安装包，不需要管理员权限。
+- `MultiPaste-<版本>-win-x64.zip`：免安装便携版。
+- `SHA256SUMS.txt`：下载文件的 SHA-256 校验值。
+
+当前安装包尚未进行商业代码签名，因此 Windows SmartScreen 在下载量较少时可能显示未知发布者警告。

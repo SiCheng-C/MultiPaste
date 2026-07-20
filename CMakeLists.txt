@@ -28,6 +28,11 @@ enable_testing()
 add_executable(multipaste_core_tests tests/core_tests.cpp)
 target_link_libraries(multipaste_core_tests PRIVATE multipaste_core)
 add_test(NAME multipaste_core_tests COMMAND multipaste_core_tests)
+add_test(
+    NAME release_config_tests
+    COMMAND powershell -NoProfile -ExecutionPolicy Bypass
+            -File ${CMAKE_CURRENT_SOURCE_DIR}/tests/release_config_tests.ps1
+)
 
 if(MSVC)
     target_compile_options(multipaste_core PRIVATE /W4 /permissive- /utf-8)
