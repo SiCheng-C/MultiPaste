@@ -28,6 +28,7 @@ Assert-True ($release -match 'contents:\s*write') 'Release needs explicit conten
 Assert-True ($release -match 'gh release create') 'Release must publish with GitHub CLI'
 Assert-True ($release -match 'MultiPaste-\$env:VERSION-win-x64\.zip') 'Portable ZIP naming is missing'
 Assert-True ($installer -match 'PrivilegesRequired=lowest') 'Installer must support per-user installation'
+Assert-True ($installer -notmatch 'ChineseSimplified\.isl') 'Installer must use a bundled Inno Setup language'
 Assert-True ($installer -match 'DefaultDirName=\{localappdata\}\\Programs\\MultiPaste') 'Installer must use a per-user directory'
 Assert-True ($installer -match 'CloseApplications=yes') 'Installer must close a running MultiPaste before updating'
 
