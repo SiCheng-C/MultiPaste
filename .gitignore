@@ -1,0 +1,26 @@
+# CMake build output
+/build*/
+/out/
+/cmake-build-*/
+
+# Local release binaries
+/dist/
+*.exe
+*.dll
+*.pdb
+
+# IDE and editor state
+/.vs/
+/.vscode/
+/.idea/
+*.user
+*.suo
+
+# Local configuration and temporary files
+settings.ini
+*.tmp
+*.log
+
+# Windows metadata
+Thumbs.db
+Desktop.ini
